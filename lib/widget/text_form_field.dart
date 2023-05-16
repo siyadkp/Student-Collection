@@ -18,7 +18,7 @@ class TextFormFieldWidget extends StatelessWidget {
         cursorColor: Colors.black,
         keyboardType: listInputTipe[index],
         controller: controllerList[index],
-        style: const TextStyle(fontSize: 22),
+        style: const TextStyle(fontSize: 15),
         decoration: InputDecoration(
             contentPadding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
             label: Text(listLabel[index],
@@ -26,11 +26,11 @@ class TextFormFieldWidget extends StatelessWidget {
             floatingLabelBehavior: FloatingLabelBehavior.always,
             hintText: 'Your ${listLabel[index]}',
             focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.white),
-              borderRadius: BorderRadius.circular(20.0),
+              borderSide: const BorderSide(color: Colors.blue),
+              borderRadius: BorderRadius.circular(10.0),
             ),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(10),
             )),
         validator: (text) {
           if (text == null || text.isEmpty) {

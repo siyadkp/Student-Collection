@@ -3,12 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:students/home/home.dart';
 import '../core/text_form_core.dart';
+import '../main.dart';
 import '../model/one_student.dart';
 import '../widget/text_form_field.dart';
 import 'bloc/add_page_bloc.dart';
+import 'package:form_builder_image_picker/form_builder_image_picker.dart';
 
 class MyProfile extends StatefulWidget {
- const MyProfile({
+  const MyProfile({
     super.key,
   });
 
@@ -22,7 +24,6 @@ class _MyProfileState extends State<MyProfile> {
   final _formKey = GlobalKey<FormState>();
   @override
   void initState() {
-    
     super.initState();
   }
 
@@ -46,11 +47,7 @@ class _MyProfileState extends State<MyProfile> {
           body: Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Colors.green, Color.fromARGB(255, 29, 221, 163)],
-              ),
-            ),
+            decoration: const BoxDecoration(),
             child: SingleChildScrollView(
               child: SafeArea(
                   child: Center(
@@ -59,7 +56,7 @@ class _MyProfileState extends State<MyProfile> {
                   child: Column(
                     children: [
                       CircleAvatar(
-                          radius: 130,
+                          radius: 120,
                           backgroundImage: imageFile != null
                               ? FileImage(File(imageFile!.path))
                               : const AssetImage('assets/person_image.jfif')
@@ -70,12 +67,15 @@ class _MyProfileState extends State<MyProfile> {
                           },
                           icon: const Icon(Icons.add_a_photo),
                           label: const Text('Add Image')),
-                      ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: 5,
-                        itemBuilder: (context, index) {
-                          return TextFormFieldWidget(index: index);
-                        },
+                      ScrollConfiguration(
+                        behavior: MyBehavior(),
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: 5,
+                          itemBuilder: (context, index) {
+                            return TextFormFieldWidget(index: index);
+                          },
+                        ),
                       ),
                       const SizedBox(
                         height: 30,
@@ -108,8 +108,8 @@ class _MyProfileState extends State<MyProfile> {
     final name = controllerList[0].text;
     final age = controllerList[1].text;
     final qualification = controllerList[2].text;
-    final domain =  controllerList[3].text;
-    final phone =  controllerList[4].text;
+    final domain = controllerList[3].text;
+    final phone = controllerList[4].text;
     final photo = imageFile!.path;
     final studentData = Student(
         name: name,
@@ -121,4 +121,3 @@ class _MyProfileState extends State<MyProfile> {
     return studentData;
   }
 }
-

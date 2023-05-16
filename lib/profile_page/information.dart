@@ -20,12 +20,12 @@ class Information extends StatelessWidget {
     ProfileBloc profileBloc = ProfileBloc();
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.purpleAccent,
+        backgroundColor: Colors.blue[200],
         automaticallyImplyLeading: false,
         centerTitle: true,
         title: const Text(
           'INFORMATIONS',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.white),
         ),
         leading: IconButton(
             onPressed: () {
@@ -37,11 +37,7 @@ class Information extends StatelessWidget {
           child: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [Colors.purple, Colors.orange])),
+        decoration: BoxDecoration(color: Colors.white),
         child: SingleChildScrollView(
             child: Column(
           children: [
@@ -59,7 +55,7 @@ class Information extends StatelessWidget {
                   width: double.infinity,
                   decoration: const BoxDecoration(
                     color: Color.fromARGB(255, 161, 177, 225),
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -85,7 +81,7 @@ class Information extends StatelessWidget {
                   width: double.infinity,
                   decoration: const BoxDecoration(
                     color: Color.fromARGB(255, 161, 177, 225),
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -111,7 +107,7 @@ class Information extends StatelessWidget {
                   width: double.infinity,
                   decoration: const BoxDecoration(
                     color: Color.fromARGB(255, 161, 177, 225),
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -137,7 +133,7 @@ class Information extends StatelessWidget {
                   width: double.infinity,
                   decoration: const BoxDecoration(
                     color: Color.fromARGB(255, 161, 177, 225),
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -163,7 +159,7 @@ class Information extends StatelessWidget {
                   width: double.infinity,
                   decoration: const BoxDecoration(
                     color: Color.fromARGB(255, 161, 177, 225),
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -185,9 +181,11 @@ class Information extends StatelessWidget {
             BlocConsumer<ProfileBloc, ProfileState>(
               bloc: profileBloc,
               listener: (context, state) {
-               if(state is NavigateIntoEditPagestate){
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => Edit(values: values),));
-               }
+                if (state is NavigateIntoEditPagestate) {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => Edit(values: values),
+                  ));
+                }
               },
               builder: (context, state) {
                 return ElevatedButton(
